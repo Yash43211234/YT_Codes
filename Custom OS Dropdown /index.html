@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown Menu</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="dropdown">
+    <button class="dropbtn" id="dropdownBtn">
+      <i class="fa-brands fa-windows"></i> Windows
+      <i class="fa-solid fa-chevron-down arrow"></i>
+    </button>
+    <div class="dropdown-content" id="dropdownContent">
+      <a href="#"><i class="fa-brands fa-windows"></i> Windows</a>
+      <a href="#"><i class="fa-brands fa-apple"></i> macOS</a>
+      <a href="#"><i class="fa-brands fa-linux"></i> Linux</a>
+      <a href="#"><span class="aix">AIX</span> AIX</a>
+    </div>
+  </div>
+
+  <script>
+    const dropdownBtn = document.getElementById("dropdownBtn");
+    const dropdownContent = document.getElementById("dropdownContent");
+    const options = dropdownContent.querySelectorAll("a");
+
+    // When option is clicked -> update button text
+    options.forEach(option => {
+      option.addEventListener("click", function(e) {
+        e.preventDefault(); // prevent page reload
+        dropdownBtn.innerHTML = this.innerHTML + 
+          ' <i class="fa-solid fa-chevron-down arrow"></i>';
+      });
+    });
+
+    // Toggle dropdown on button click
+    dropdownBtn.addEventListener("click", () => {
+      dropdownContent.classList.toggle("show");
+    });
+
+    // Close dropdown if clicked outside
+    window.addEventListener("click", function(e) {
+      if (!dropdownBtn.contains(e.target) && !dropdownContent.contains(e.target)) {
+        dropdownContent.classList.remove("show");
+      }
+    });
+  </script>
+</body>
+</html>
