@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  /* A subtle, elegant gradient */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Center the content for a better demo */
+}
+
+/* Navbar container */
+.navbar {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  /* Increased width for a more expansive feel */
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  /* More padding for a premium look */
+  background: rgba(255, 255, 255, 0.1);
+  /* Lighter, more transparent background */
+  border-radius: 20px;
+  /* Softer corners */
+  backdrop-filter: blur(20px);
+  /* Stronger blur for better depth effect */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  /* Deeper shadow */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* Subtle border for separation */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Smooth, bouncy transition */
+}
+
+.navbar:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Logo */
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  /* White logo for contrast */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  /* Increased gap between links */
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #e0e0e0;
+  /* Lighter gray for a modern look */
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  /* For the sliding background effect */
+  z-index: 1;
+}
+
+/* Pseudo-element for the hover effect */
+.nav-links li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.nav-links li a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  /* Slight lift on hover */
+  box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+}
+
+.nav-links li a:hover::before {
+  transform: translateY(0);
+  /* Slide the background up */
+}
+
+
+/* Login button */
+.login-btn {
+  border: none;
+  outline: none;
+  padding: 12px 25px;
+  background: linear-gradient(45deg, #ff4b2b, #ffdd00);
+  color: #1f1c2c;
+  /* Dark text for contrast */
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.login-btn i {
+  margin-right: 8px;
+}
+
+/* Pseudo-element for the gradient background */
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ffdd00, #ff4b2b);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.login-btn:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 75, 43, 0.6);
+}
+
+.login-btn:hover::before {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+    position: static;
+    transform: none;
+    margin: 20px;
+    width: auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+}
