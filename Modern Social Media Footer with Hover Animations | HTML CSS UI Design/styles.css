@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+/* Main body and animated background */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent body scroll from the background */
+    position: relative; /* Context for absolute background */
+}
+
+/* Background animation container */
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+    z-index: -1; /* Place behind the footer */
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Social footer container */
+.social-footer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 30px;
+    border-radius: 12px;
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.social-footer:hover {
+    transform: scale(1.05); /* Slight pop on hover */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.follow-text {
+    font-size: 16px;
+    color: #fff; /* Changed for better contrast */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.follow-text a {
+    color: #ffdd00; /* Vibrant yellow for the link */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+.follow-text a:hover {
+    color: #ff4b2b; /* Change color on hover */
+    text-decoration: underline;
+}
+
+.divider {
+    width: 2px; /* Thicker divider */
+    height: 25px;
+    background: linear-gradient(to bottom, transparent, #fff, transparent);
+    /* Fading gradient effect */
+    transition: transform 0.3s ease-out;
+}
+
+/* Icons container */
+.icons {
+    display: flex;
+    gap: 18px;
+}
+
+.icons a {
+    font-size: 20px;
+    color: #fff; /* Initial color is white */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative; /* For glow effect */
+    z-index: 1;
+}
+
+/* Hover Effects with Brand Colors and Glow */
+.icons a:hover {
+    transform: translateY(-5px) scale(1.2) rotate(5deg);
+    /* Lift, scale, and rotate on hover */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Brand Colors with a Glow */
+.icons a:nth-child(1):hover { color: #000; text-shadow: 0 0 10px #000; }     /* Twitter (X) */
+.icons a:nth-child(2):hover { color: #ff0000; text-shadow: 0 0 10px #ff0000; } /* YouTube */
+.icons a:nth-child(3):hover { color: #0077b5; text-shadow: 0 0 10px #0077b5; } /* LinkedIn */
+.icons a:nth-child(4):hover { color: #e4405f; text-shadow: 0 0 10px #e4405f; } /* Instagram */
+.icons a:nth-child(5):hover { color: #1877f2; text-shadow: 0 0 10px #1877f2; } /* Facebook */
