@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+
+  /* Dark base background */
+  background-color: #0b0f19 !important;
+
+  /* Diagonal checked lines */
+  background-image: repeating-linear-gradient(
+    135deg,                /* diagonal angle */
+    rgba(255, 255, 255, 0.05) 0px,  /* thin light line */
+    rgba(255, 255, 255, 0.05) 1px,  /* 1px line thickness */
+    transparent 1px,
+    transparent 20px       /* gap between lines */
+  );
+}
+
+
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0d1526;
+  border-radius: 50px;
+  padding: 12px 20px;
+  width: 320px;
+  position: relative;
+  color: #fff;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* animated glowing border */
+.search-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  padding: 6px; /* thinner border */
+  background: linear-gradient(90deg, #004466, #0a1a33, #004466); /* darker tones */
+  background-size: 200% 200%;
+  animation: borderGlow 6s linear infinite;
+  opacity: 0.7; /* makes it more subtle */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.search-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.search-btn:hover {
+  transform: scale(1.2);
+  color: #00f0ff;
+}
