@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alert Notifications</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="alert success">
+    <span class="icon">✔</span>
+    <div class="content">
+      <strong>Success</strong>
+      <p>Your action was completed successfully.</p>
+    </div>
+    <span class="close">×</span>
+  </div>
+
+  <div class="alert info">
+    <span class="icon">ℹ</span>
+    <div class="content">
+      <strong>Info</strong>
+      <p>Here is some important information for you.</p>
+    </div>
+    <span class="close">×</span>
+  </div>
+
+  <div class="alert warning">
+    <span class="icon">!</span>
+    <div class="content">
+      <strong>Warning</strong>
+      <p>Please be cautious about this.</p>
+    </div>
+    <span class="close">×</span>
+
+
+<script>
+  document.querySelectorAll('.alert .close').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const alert = btn.parentElement;
+      alert.classList.add('hide');
+      setTimeout(() => alert.remove(), 300); // remove after animation
+    });
+  });
+</script>
+
+
+  </div>
+</body>
+</html>
