@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* Main glassmorphism container */
+.glass-container {
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    background-color: rgba(17, 25, 40, 0.65); /* Slightly more transparent */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 60px rgba(0, 0, 0, 0.4), /* A more prominent shadow for depth */
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1); /* Subtle inner light */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for the glass container */
+.glass-container:hover {
+    transform: translateY(-5px) scale(1.02); /* Lifts the card slightly and scales it up */
+    box-shadow: 0 8px 80px rgba(0, 0, 0, 0.5),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Progress bar fill with a more vibrant gradient */
+.progress-fill {
+    background-image: linear-gradient(to right, #6EE7B7, #3B82F6);
+    border-radius: 9999px; /* This ensures the ends are fully rounded */
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6); /* Adds a glowing effect */
+    transition: all 0.5s ease-in-out;
+}
+
+/* Close button with enhanced glass effect and hover */
+.close-button {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(255, 255, 255, 0.15); /* A bit more visible */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Brighter on hover */
+    transform: scale(1.1); /* Slightly increases the size */
+}
+
+/* Orb elements for background decoration */
+.orb-1 {
+    background: radial-gradient(#6EE7B7, #10B981, transparent);
+    animation: pulse1 4s infinite ease-in-out;
+}
+
+.orb-2 {
+    background: radial-gradient(#8B5CF6, #4C1D95, transparent);
+    animation: pulse2 5s infinite ease-in-out;
+}
+
+.orb-3 {
+    background: radial-gradient(#3B82F6, #1D4ED8, transparent);
+    animation: pulse3 6s infinite ease-in-out;
+}
+
+/* Keyframe animations for subtle pulsing effect */
+@keyframes pulse1 {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes pulse2 {
+    0%, 100% { transform: scale(1.05); }
+    50% { transform: scale(1); }
+}
+
+@keyframes pulse3 {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
