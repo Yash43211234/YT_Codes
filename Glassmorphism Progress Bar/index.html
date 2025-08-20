@@ -1,0 +1,100 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Progress Bar</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Tailwind configuration for animations */
+        @keyframes pulse-slow {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 8s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-950 font-[Inter] text-white flex items-center justify-center min-h-screen relative overflow-hidden p-4">
+
+    <!-- Glowing Background Orbs -->
+    <div class="orb-1 absolute top-10 left-1/4 w-40 h-40 rounded-full opacity-60 animate-pulse-slow"></div>
+    <div class="orb-2 absolute top-1/2 right-1/4 w-32 h-32 rounded-full opacity-60 animate-pulse-slow delay-200"></div>
+    <div class="orb-3 absolute bottom-1/4 left-1/2 w-52 h-52 rounded-full opacity-60 animate-pulse-slow delay-400"></div>
+
+    <!-- Main Card Container -->
+    <div id="progress-card" class="glass-container w-full max-w-2xl rounded-3xl p-6 flex flex-col items-center space-y-4">
+        
+        <!-- Progress Bar and Text -->
+        <div class="flex items-center w-full">
+            <h1 id="progress-text" class="text-3xl font-semibold flex-grow">Progress 0%</h1>
+            <!-- Close Button -->
+            <button id="close-button" class="close-button w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Progress Bar Track -->
+        <div class="w-full bg-black/30 rounded-full h-4 relative overflow-hidden">
+            <!-- Progress Fill -->
+            <div id="progress-fill" class="progress-fill h-full rounded-full transition-all duration-500 ease-in-out"></div>
+        </div>
+
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script> 
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const progressFill = document.getElementById('progress-fill');
+    const progressText = document.getElementById('progress-text');
+    const closeButton = document.getElementById('close-button');
+    const progressCard = document.getElementById('progress-card');
+
+    /**
+     * Updates the progress bar and text dynamically.
+     * @param {number} value The new progress value, from 0 to 100.
+     */
+    function updateProgress(value) {
+        // Ensure the value is within the valid range
+        const clampedValue = Math.max(0, Math.min(100, value));
+        
+        // Update the width of the progress bar fill
+        progressFill.style.width = `${clampedValue}%`;
+        
+        // Update the text to reflect the new percentage
+        progressText.textContent = `Progress ${clampedValue}%`;
+    }
+
+    // Example usage: Simulate progress increasing over time
+    let progress = 0;
+    const interval = setInterval(() => {
+        if (progress < 100) {
+            progress += 5; // Increase progress by 5
+            updateProgress(progress);
+        } else {
+            clearInterval(interval); // Stop the interval when progress reaches 100
+        }
+    }, 500); // Update every 500 milliseconds
+
+    // Add event listener to the close button
+    closeButton.addEventListener('click', () => {
+        // Example: Hide the progress card when the close button is clicked
+        progressCard.style.display = 'none';
+    });
+
+});
+</script>
+</body>
+</html>  
