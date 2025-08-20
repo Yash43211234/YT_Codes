@@ -1,0 +1,109 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 50vh;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e8f0f7 !important;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 18px;
+  padding: 30px 20px;
+  width: 320px;
+  /* reduced blur shadow */
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3); /* subtle glass border */
+  text-align: center;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding: 10px;
+  /* reduced inset shadow */
+  box-shadow: inset 6px 6px 7px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.input-group i {
+  margin-right: 10px;
+  color: #555;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 14px;
+  color: #222;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: #2eaecb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(46, 174, 203, 0.3); /* lighter blur */
+  transition: background 0.3s;
+}
+
+.login-btn:hover {
+  background: #238aa1;
+}
+
+.extra {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+.extra a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+}
