@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accordion Image Carousel</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="carousel" role="tablist" aria-label="Image carousel">
+    <button class="card active" role="tab" aria-selected="true" style="--bg:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')">
+      <div class="content">
+        <h3>Grand Canyon</h3>
+        <p>Explore the sunset in USA</p>
+      </div>
+    </button>
+    <button class="card" role="tab" aria-selected="false" style="--bg:url('https://images.unsplash.com/photo-1523413651479-597eb2da0ad6')">
+      <div class="content">
+        <h3>Forest</h3>
+        <p>Peaceful green escape</p>
+      </div>
+    </button>
+    <button class="card" role="tab" aria-selected="false" style="--bg:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee')">
+      <div class="content">
+        <h3>Mountains</h3>
+        <p>Snowy adventure</p>
+      </div>
+    </button>
+    <button class="card" role="tab" aria-selected="false" style="--bg:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')">
+      <div class="content">
+        <h3>Beach</h3>
+        <p>Relax by the ocean</p>
+      </div>
+    </button>
+  </div>
+
+  <script >
+const carousel = document.querySelector(".carousel");
+
+carousel.addEventListener("click", (e) => {
+  const card = e.target.closest(".card");
+  if (!card) return;
+
+  const current = carousel.querySelector(".card.active");
+  if (current === card) return;
+
+  current?.classList.remove("active");
+  current?.setAttribute("aria-selected", "false");
+
+  card.classList.add("active");
+  card.setAttribute("aria-selected", "true");
+});
+
+// Keyboard support (← → to switch)
+window.addEventListener("keydown", (e) => {
+  if (!["ArrowLeft", "ArrowRight"].includes(e.key)) return;
+
+  const cards = [...document.querySelectorAll(".card")];
+  const i = cards.findIndex(c => c.classList.contains("active"));
+  let next = i;
+
+  if (e.key === "ArrowRight") next = (i + 1) % cards.length;
+  if (e.key === "ArrowLeft")  next = (i - 1 + cards.length) % cards.length;
+
+  cards[i]?.classList.remove("active");
+  cards[i]?.setAttribute("aria-selected", "false");
+  cards[next].classList.add("active");
+  cards[next].setAttribute("aria-selected", "true");
+  cards[next].focus();
+});
+
+
+    
+  </script>
+</body>
+</html>
