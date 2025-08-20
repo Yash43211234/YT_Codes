@@ -1,0 +1,78 @@
+:root { color-scheme: dark; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0d1b2a !important;
+  font-family: Arial, sans-serif;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 92%;
+  max-width: 1000px;
+  height: 420px;
+}
+
+.card {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  flex: 1 1 0%;
+  height: 100%;
+  border-radius: 22px;
+  background: var(--bg) center / cover no-repeat;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: end;
+  overflow: hidden;
+  transition: flex-grow 0.6s ease;
+  will-change: flex-grow;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+}
+
+/* subtle gradient for text readability */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.05) 40%, transparent);
+  pointer-events: none;
+}
+
+.card .content {
+  width: 100%;
+  color: #fff;
+  padding: 16px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  text-align: left;
+}
+
+.card.active {
+  flex-grow: 5;
+}
+
+.card.active .content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Focus styles (keyboard users) */
+.card:focus-visible {
+  outline: 3px solid #66d9ff;
+  outline-offset: 2px;
+}
+
+/* Optional: tighter layout on small screens */
+@media (max-width: 680px) {
+  .carousel { height: 340px; }
+  .card.active { flex-grow: 4; }
+}
