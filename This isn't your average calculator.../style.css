@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #282c34 !important; /* Dark background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+}
+
+.calculator {
+    background: #282c34;
+    border-radius: 30px; /* Slightly smaller border radius */
+    padding: 20px; /* Reduced padding */
+    box-shadow: 8px 8px 16px #21252b, -8px -8px 16px #2f333d; /* Reduced shadow size */
+    display: grid;
+    grid-template-columns: repeat(4, 55px); /* Smaller button columns */
+    gap: 12px; /* Reduced gap between elements */
+    justify-content: center;
+}
+
+#display {
+    grid-column: span 4;
+    background: #1c1f24;
+    border-radius: 15px; /* Smaller border radius */
+    padding: 15px; /* Reduced padding */
+    text-align: right;
+    font-size: 24px; /* Smaller font size */
+    font-weight: 300;
+    color: #e0e0e0;
+    box-shadow: inset 4px 4px 8px #171a1d, inset -4px -4px 8px #212429;
+    border: none;
+    outline: none;
+    width: auto;
+}
+
+button {
+    height: 55px; /* Smaller button height */
+    width: 55px; /* Smaller button width */
+    font-size: 18px; /* Smaller font size */
+    font-weight: 600;
+    border: none;
+    border-radius: 20px; /* Smaller border radius */
+    cursor: pointer;
+    background: #282c34;
+    color: #e0e0e0;
+    box-shadow: 5px 5px 10px #21252b, -5px -5px 10px #2f333d; /* Smaller shadow size */
+    transition: 0.2s ease-in-out;
+}
+
+button:hover {
+    box-shadow: 2px 2px 4px #21252b, -2px -2px 4px #2f333d; /* Reduced hover shadow */
+    transform: scale(0.98);
+}
+
+/* Specific styling for operators and equals button */
+.operator {
+    color: #4CAF50;
+}
+
+.clear {
+    color: #FF6347;
+}
+
+.equal {
+    background: #4CAF50;
+    color: #ffffff;
+    font-size: 24px; /* Smaller font size for equals button */
+}
+
+.equal:hover {
+    background: #45a049;
+    transform: scale(0.98);
+}
