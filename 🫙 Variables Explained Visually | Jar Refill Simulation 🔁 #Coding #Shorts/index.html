@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Variable Reassignment — Jar Simulation</title>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🔁 Variable Reassignment — Jar Refill</h1>
+    <p class="sub">Watch a variable change — the jar level updates to match the new value.</p>
+
+    <div class="jar-outer" aria-hidden="true">
+      <div class="jar-neck"></div>
+      <div id="fill" class="fill">0%</div>
+    </div>
+
+    <div class="indicator">Variable: <strong id="varName">waterLevel</strong> = <span id="varValue">0</span></div>
+
+    <div class="controls">
+      <button onclick="assign(10)">Assign 10</button>
+      <button onclick="assign(40)">Assign 40</button>
+      <button onclick="assign(75)">Assign 75</button>
+      <button onclick="assign(100)">Assign 100</button>
+      <button class="small" onclick="randomAssign()">Random</button>
+      <button class="small" onclick="resetVar()">Reset</button>
+    </div>
+
+    <div id="log" class="log"></div>
+  </div>
+
+  <script>
+    // Simulated variable in JS
+    // We'll show how assigning a new value changes state and the jar UI.
+    let waterLevel = 0;           // initial variable value (0..100)
+    const MAX = 100;              // for percent mapping
+    const fillEl = document.getElementById('fill');
+    const varValEl = document.getElementById('varValue');
+    const logEl = document.getElementById('log');
+
+    // helper to update UI from variable
+    function reflectVar() {
+      const pct = Math.max(0, Math.min(MAX, waterLevel)); // clamp
+      // set fill height as percent
+      fillEl.style.height = pct + '%';
+      fillEl.textContent = pct + '%';
+      varValEl.textContent = pct;
+    }
+
+    // "assign" simulates reassigning the variable
+    function assign(newVal){
+      logEl.textContent = `Assigning waterLevel = ${newVal} ...`;
+      // small pause to emphasize change
+      setTimeout(() => {
+        // reassignment (this is the important step)
+        waterLevel = newVal;
+        reflectVar();
+
+        // show message describing concept
+        logEl.textContent = `Variable reassigned → waterLevel now = ${waterLevel}`;
+      }, 300);
+    }
+
+    function randomAssign(){
+      const v = Math.floor(Math.random()*101);
+      assign(v);
+    }
+
+    function resetVar(){
+      logEl.textContent = 'Resetting variable to 0 ...';
+      setTimeout(() => {
+        waterLevel = 0;
+        reflectVar();
+        logEl.textContent = 'Variable reset → waterLevel = 0';
+      }, 300);
+    }
+
+    // initial render
+    reflectVar();
+  </script>
+</body>
+</html>
