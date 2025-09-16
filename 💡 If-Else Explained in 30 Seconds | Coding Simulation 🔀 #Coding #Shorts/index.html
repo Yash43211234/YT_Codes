@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>If-Else Simulation</title>
+    
+</head>
+<body>
+  <h1>🔀 If-Else Simulation</h1>
+  <p>Condition: <strong>Is number even?</strong></p>
+
+  <div class="bulb" id="bulb"></div>
+
+  <button class="btn" onclick="checkNumber(4)">Check 4</button>
+  <button class="btn" onclick="checkNumber(7)">Check 7</button>
+
+  <p id="result"></p>
+
+  <script>
+    function checkNumber(num) {
+      const bulb = document.getElementById("bulb");
+      const result = document.getElementById("result");
+
+      // if-else condition
+      if (num % 2 === 0) {
+        bulb.classList.add("on");
+        result.textContent = num + " is EVEN → Bulb ON 💡";
+      } else {
+        bulb.classList.remove("on");
+        result.textContent = num + " is ODD → Bulb OFF ❌";
+      }
+    }
+  </script>
+</body>
+</html>
