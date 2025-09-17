@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Supreme Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
+                <h1>Jane Doe</h1>
+                <p class="profile-title">Digital Sorceress</p>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <p class="stat-number" data-target="15000">0</p>
+                    <p class="stat-label">Followers</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-number" data-target="250">0</p>
+                    <p class="stat-label">Projects</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-number" data-target="1000">0</p>
+                    <p class="stat-label">Likes</p>
+                </div>
+            </div>
+
+            <div class="profile-bio">
+                <p>
+                    Passionate UI/UX designer and front-end developer based in the digital realm. I specialize in creating pixel-perfect, interactive experiences that bring ideas to life.
+                </p>
+            </div>
+
+            <div class="profile-links">
+                <a href="#" class="link-btn">Portfolio</a>
+                <a href="#" class="link-btn">Contact Me</a>
+            </div>
+        </div>
+    </div>
+
+    <script >
+      document.addEventListener('DOMContentLoaded', () => {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const animateStat = (element) => {
+        const target = parseInt(element.getAttribute('data-target'));
+        let current = 0;
+        const duration = 2000;
+        const increment = target / (duration / 10);
+        
+        const updateCount = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = target.toLocaleString();
+                clearInterval(updateCount);
+            } else {
+                element.textContent = Math.ceil(current).toLocaleString();
+            }
+        }, 10);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateStat(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    statNumbers.forEach(number => {
+        observer.observe(number);
+    });
+});
+    </script>
+</body>
+</html>
