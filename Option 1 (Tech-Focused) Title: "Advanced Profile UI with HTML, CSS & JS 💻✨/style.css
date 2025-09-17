@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --dark-bg: #121212;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-color: #f0f0f0;
+    --accent-color: #007bff;
+    --glow-color: rgba(0, 123, 255, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.profile-container {
+    perspective: 1000px;
+}
+
+.profile-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 350px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+    transition: transform 0.5s ease-in-out;
+    transform: rotateY(0deg);
+}
+
+.profile-card:hover {
+    transform: rotateY(5deg) scale(1.02);
+}
+
+.profile-header {
+    margin-bottom: 2rem;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 20px var(--glow-color);
+    object-fit: cover;
+    margin-bottom: 1rem;
+    animation: pulse-glow 2s infinite alternate;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.profile-title {
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.profile-bio {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.profile-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.link-btn {
+    background: linear-gradient(45deg, var(--accent-color), #00aaff);
+    color: var(--dark-bg);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.link-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.5);
+}
+
+/* Keyframe Animations */
+@keyframes pulse-glow {
+    from {
+        box-shadow: 0 0 10px var(--glow-color);
+    }
+    to {
+        box-shadow: 0 0 25px var(--glow-color);
+    }
+}
